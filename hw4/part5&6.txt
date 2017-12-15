@@ -1,0 +1,19 @@
+5)
+
+Phong shading is the best method for simulating highlight as it achieves smoother results. In Gouraud shading, a highlight tends to be smoothed out over a larger area than it should cover. The quality of the highlights depends highly on the density of vertices in the mesh. With movement, the highlights will appear to jump from vertex to vertex. On the other hand, Phong shading is more computationally expensive but does not suffer from these problems.
+
+6)
+
+a) The Phong reflection model calculates how we can calculate reflection at a certain vertex using a combination of ambient, diffuse, and specular light components. On the other hand, Phong shading deals with interpolating surface normals and computing colors based on interpolated normals to achieve smoother shading.
+
+b) In Flat Shading, shading calculation is only carried out once per polygon. Thus, it is computationally cheap, but also not very realistic. In Gouraud Shading, a color is computed for each vertex based on its normal, and then the rasterizer interpolates the color of the polygon based on the colors of the vertices. This is more computationally expensive than Flat Shading, but is much smoother. In Phong Shading, the surface normals are interpolated rather than colors, and the color is computed using the interpolated normals. This is the most computationally expensive, but prevents the appearance of Mach bands unlike Gouraud Shading and also avoids problems mentioned in part 5 (above).
+
+c) A directional light illuminates in a certain direction but does not originate at a specific point. Point light illuminates in all directions from a specific point.
+
+d) The eye position does influence the shading of the object since the viewMatrix is used to calculate L.
+
+e) Setting the specular term to (0, 0, 0) removes highlights.
+
+f) Increasing the shininess exponent causes the highlight to be concentrated onto a narrower region.
+
+g) The lighting was computed in eye space.

@@ -1,0 +1,15 @@
+Compare projection shadows to shadow mapping by listing advantages and
+disadvantages of the two techniques. 
+
+The shadow mapping method provides more accurate shadows, since it can handle
+self-shadowing and better models the physics behind shadows. On the other
+hand, projection shadows are not as accurate since we project the objects onto
+one plane, while the shadows may exist in many different places (such as the
+object itself).
+
+However, projection shadows do have their advantages. For one, it is much
+simpler to implement than shadow mapping. In addition, it is faster, since
+shadow mapping requires the generation of a shadow map, which means that we
+need to render twice for every render() call, although the first render from
+the light's point of view is less computationally expensive. Thus, when speed
+is a concern, projection shadows may be the only choice available.

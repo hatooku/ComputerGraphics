@@ -1,0 +1,6 @@
+Explain how you obtain and use surface normals, and explain how this relates to
+the surface smoothness when you are rendering a triangle mesh.
+
+The normals of each vertex are obtained from the OBJ file. Then, the surface normals
+are interpolated using the normals of the three vertices of each triangle. This leads
+to better surface smoothness compared to simply interpolating based on vertex colors.

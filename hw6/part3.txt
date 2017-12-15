@@ -1,0 +1,1 @@
+I used the "Mipmap" filtering mode. When I tried using the "Nearest" setting, there was a lot of artifacts in the mountain ranges, and although the "Linear" setting was slightly better, these problems were still very noticeable. However, when I used the "Mipmap" setting, the problem was gone and the result was a smooth image projected onto the sphere.

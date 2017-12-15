@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 aPosition;
+uniform mat4 modelMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
+
+varying vec4 vNormal;
+void main() {
+    gl_Position = projectionMatrix * viewMatrix * modelMatrix * aPosition;
+    vNormal = aPosition;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision highp float;
+
+varying vec4 vNormal;
+uniform bool reflexive;
+uniform vec3 eye;
+uniform mat4 mTex;
+uniform samplerCube texMap;
+uniform sampler2D texMap2;
+
+const float PI = 3.1415926535897932384626433832795;
+
+vec3 rotate_to_normal(vec3 normal, vec3 v)
+{
+    float a = 1.0/(1.0 + normal.z);
+    float b = -normal.x*normal.y*a;
+    return vec3(1.0 - normal.x*normal.x*a, b, -normal.x)*v.x
+        + vec3(b, 1.0 - normal.y*normal.y*a, -normal.y)*v.y
+        + normal*v.z;
+}
+
+void main() {
+    if (reflexive) {
+        float u = atan(vNormal.x, vNormal.z) / (-2.0 * PI);
+        float v = atan(sqrt(vNormal.z * vNormal.z + vNormal.x * vNormal.x), vNormal.y) / PI;
+        vec3 tangent_vector = (2.0 * texture2D(texMap2, vec2(u, v)) - 1.0).xyz;
+        vec3 newNormal = rotate_to_normal(vNormal.xyz, tangent_vector);
+        vec3 texCoord = (mTex * vec4(newNormal, 1.0)).xyz;    
+        gl_FragColor = textureCube(texMap, reflect(-eye, texCoord));
+    }
+    else {
+        vec3 texCoord = (mTex * vNormal).xyz;
+        gl_FragColor = textureCube(texMap, texCoord);
+    }
+}
+</script> 
+
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>Part 4</title>
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="part4.js"></script>
+</head>
+
+<body>
+    <canvas id="gl-canvas" width="512" height="512">
+    Oops ... your browser doesn't support the HTML5 canvas element
+    </canvas>
+</body></html>

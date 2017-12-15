@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 aPosition;
+attribute vec4 aNormal;
+varying lowp vec3 vLighting;
+uniform mat4 modelMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
+
+varying vec4 vNormal;
+void main() {
+    gl_Position = projectionMatrix * viewMatrix * modelMatrix * aPosition;
+    vNormal = aNormal;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision highp float;
+varying vec4 vNormal;
+
+uniform samplerCube texMap;
+
+const float PI = 3.1415926535897932384626433832795;
+
+void main() {
+    float x = vNormal.x;
+    float y = vNormal.y;
+    float z = vNormal.z;
+
+    float u = atan(vNormal.y, vNormal.x) / (-2.0 * PI);
+    float v = atan(sqrt(vNormal.x * vNormal.x + vNormal.y * vNormal.y), vNormal.z) / PI;
+
+    vec4 color = textureCube(texMap, vNormal.xyz);
+
+    vec3 ambientLight = vec3(0.4, 0.4, 0.4);
+    vec3 directionalLight = vec3(1,1,1);
+    vec3 lightDirection = vec3(0, 0, 1);
+
+    float directional = max(dot(vNormal.xyz, lightDirection), 0.0);
+    vec3 vLighting = ambientLight + (directional * directionalLight);
+
+    gl_FragColor = vec4(color.rgb * vLighting, color.a);
+}
+</script> 
+
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>Part 1</title>
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="part1.js"></script>
+</head>
+
+<body>
+    <canvas id="gl-canvas" width="512" height="512">
+    Oops ... your browser doesn't support the HTML5 canvas element
+    </canvas>
+</body></html>

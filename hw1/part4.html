@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec2 aPosition;
+
+uniform vec2 uRotation;
+
+void main() {
+
+    // vec2 rotatedPosition = vec2(
+    //     aPosition.x * 0.3 + aPosition.y * 0.3,
+    //     aPosition.y * 0.3 - aPosition.x * 0.3);
+    vec2 rotatedPosition = vec2(
+        aPosition.x * uRotation.y + aPosition.y * uRotation.x,
+        aPosition.y * uRotation.y - aPosition.x * uRotation.x);
+
+    gl_Position = vec4(rotatedPosition, 1, 1);
+    gl_PointSize = 20.0;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+void main() {
+ gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 );
+}
+</script> 
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>Part 4</title>
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="part4.js"></script>
+</head>
+
+<body>
+    <canvas id="gl-canvas" width="512" height="512">
+    Oops ... your browser doesn't support the HTML5 canvas element
+    </canvas>
+</body></html>

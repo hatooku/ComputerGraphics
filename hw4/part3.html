@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 aPosition;
+attribute vec4 aNormal;
+// attribute vec4 aColor;
+varying lowp vec4 vColor;
+varying lowp vec3 vLighting;
+uniform mat4 modelMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
+void main() {
+    gl_Position = projectionMatrix * viewMatrix * modelMatrix * aPosition;
+    vColor = (0.5 * aPosition + 0.5);
+
+    vec3 lightDirection = vec3(0, 0, 1);
+    vec3 directionalLightColor = vec3(1,1,1);
+    vec3 ambientLight = vec3(0.2, 0.2, 0.2);
+    float directional = max(dot(aNormal.xyz, lightDirection), 0.0);
+    vLighting = ambientLight + (directional * directionalLightColor);
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+varying lowp vec4 vColor;
+varying lowp vec3 vLighting;
+void main() {
+ gl_FragColor = vec4(vColor.rgb * vLighting, vColor.a);
+}
+</script> 
+
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>Part 3</title>
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="part3.js"></script>
+</head>
+
+<body>
+    <canvas id="gl-canvas" width="512" height="512">
+    Oops ... your browser doesn't support the HTML5 canvas element
+    </canvas>
+    <br/>
+    <button id="Increment">Increment</button>
+    <button id="Decrement">Decrement</button>
+    <p>Subdivision Level: <span id="Subdivision Level">0</span>
+    </p>
+</body></html>

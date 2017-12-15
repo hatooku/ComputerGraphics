@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+attribute vec4 vNormal;
+
+varying lowp vec4 fColor;
+
+uniform vec4 ambientProduct, diffuseProduct, specularProduct;
+uniform mat4 modelMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
+uniform mat3 normalMatrix;
+uniform vec4 lightPosition;
+uniform float shininess;
+
+void main() {
+    mat4 modelViewMatrix = viewMatrix * modelMatrix;
+
+    vec3 pos = (modelViewMatrix * vPosition).xyz; //?
+    vec3 light = (viewMatrix * lightPosition).xyz;
+    vec3 L = lightPosition.w == 0.0 ? normalize(light) : normalize(light - pos);
+
+    vec3 E = normalize(-pos);
+    vec3 H = normalize(L + E);
+
+    // Transform vertex normal into eye coordinates
+    vec3 N = normalize(normalMatrix * vNormal.xyz);
+
+    // Compute terms in the illumination equation
+    vec4 ambient = ambientProduct;
+
+    float Kd = max(dot(L, N), 0.0);
+    vec4 diffuse = Kd * diffuseProduct;
+
+    float Ks = pow(max(dot(N, H), 0.0), shininess);
+    vec4 specular = Ks * specularProduct;
+    if (dot(L, N) < 0.0) {
+        specular = vec4(0.0, 0.0, 0.0, 1.0);
+    }
+
+    fColor = ambient + diffuse + specular;
+    fColor.a = 1.0;
+
+    gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+varying lowp vec4 fColor;
+void main() {
+ gl_FragColor = fColor;
+}
+</script> 
+
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>Part 4</title>
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="part4.js"></script>
+</head>
+
+<body>
+    <canvas id="gl-canvas" width="512" height="512">
+    Oops ... your browser doesn't support the HTML5 canvas element
+    </canvas>
+    <br/>
+    <button id="Increment">Increment</button>
+    <button id="Decrement">Decrement</button>
+    <p>Subdivision Level: <span id="Subdivision Level">0</span>
+    </p>
+    <div>
+        k_a
+        <input id="kaSlider" type="range" min="0" max="1" step="0.05" value="0.3" />
+    </div>
+    <div>
+        k_d
+        <input id="kdSlider" type="range" min="0" max="1" step="0.05" value="0.5" />
+    </div>
+    <div>
+        k_s
+        <input id="ksSlider" type="range" min="0" max="1" step="0.05" value="0.5" />
+    </div>
+    <div>
+        Shininess
+        <input id="shininessSlider" type="range" min="10" max="1000" step="50" value="400" />
+    </div>
+</body></html>

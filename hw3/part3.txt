@@ -1,0 +1,7 @@
+1) The transformation matrices used were scaling, rotation, and translation.
+
+2) For all of the cubes, the matrices were concatenated with the formula:
+
+T * R * S
+
+where T = translation, R = rotation, and S = scaling.

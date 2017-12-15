@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 aPosition;
+attribute vec4 aColor;
+varying lowp vec4 vColor;
+void main() {
+ gl_Position = aPosition;
+ vColor = aColor;
+ gl_PointSize = 20.0;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+varying lowp vec4 vColor;
+void main() {
+ gl_FragColor = vColor;
+}
+</script> 
+
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>Part 2</title>
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="part2.js"></script>
+</head>
+
+<body>
+    <canvas id="gl-canvas" width="512" height="512">
+    Oops ... your browser doesn't support the HTML5 canvas element
+    </canvas>
+    <button id="ClearCanvas">Clear Canvas</button>
+    <select id="ColorMenu" size="9">
+        <option value="0">Black</option>
+        <option value="1">Red</option>
+        <option value="2">Yellow</option>
+        <option value="3">Green</option>
+        <option value="4">Blue</option>
+        <option value="5">Magenta</option>
+        <option value="6">Cyan</option>
+        <option value="7">White</option>
+        <option value="8">Cornflower</option>
+    </select>
+
+
+</body></html>

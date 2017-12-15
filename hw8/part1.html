@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script id="vertex-shader1" type="x-shader/x-vertex">
+attribute vec3 a_Position;
+attribute vec4 a_Color;
+attribute vec3 a_Normal;
+
+uniform mat4 modelMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
+
+varying vec3 N, L, E;
+uniform vec4 lightPosition;
+uniform mat3 normalMatrix;
+
+varying vec4 vColor;
+
+void main() {
+    mat4 modelViewMatrix = viewMatrix * modelMatrix;
+    vec3 pos = (modelViewMatrix * vec4(a_Position, 1)).xyz;
+    vec3 light = (viewMatrix * lightPosition).xyz;
+
+    if(lightPosition.w == 0.0) {
+        L = normalize(light.xyz); // check for directional light
+    }
+    else {
+        L = normalize(light.xyz - pos);
+    }
+
+    E = -pos;
+    N = normalize(normalMatrix * a_Normal);
+
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(a_Position,1);
+    vColor = a_Color;
+}
+</script>
+
+<script id="vertex-shader2" type="x-shader/x-vertex">
+attribute vec3 aPosition;
+attribute vec2 vTexCoord;
+
+varying vec2 fTexCoord;
+uniform mat4 modelMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
+void main() {
+    mat4 modelViewMatrix = viewMatrix * modelMatrix;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(aPosition, 1);
+    fTexCoord = vTexCoord;
+}
+</script>
+
+<script id="fragment-shader1" type="x-shader/x-fragment">
+precision highp float;
+varying vec4 vColor;
+uniform vec4 ambientProduct, diffuseProduct, specularProduct;
+uniform float shininess;
+uniform vec4 visibility;
+varying vec3 N, L, E;
+void main() {
+    vec3 H = normalize(L + normalize(E));
+    vec4 ambient = ambientProduct;
+
+    vec4 diffuse = max(dot(L, N), 0.0) * diffuseProduct;
+
+    vec4 specular = pow(max(dot(N, H), 0.0), shininess) * specularProduct;
+    if (dot(L, N) < 0.0) {
+        specular = vec4(0.0, 0.0, 0.0, 1.0);
+    }
+
+    vec4 fColor = ambient + vColor * diffuse + specular;
+    fColor.a = 1.0;
+
+    gl_FragColor = visibility * fColor;
+}
+</script> 
+
+<script id="fragment-shader2" type="x-shader/x-fragment">
+precision highp float;
+varying vec4 vColor;
+uniform sampler2D texMap;
+varying vec2 fTexCoord;
+
+void main() {
+    gl_FragColor = texture2D(texMap, fTexCoord);
+}
+</script> 
+
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>Part 1</title>
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="../Common/OBJParser.js"></script>
+<script type="text/javascript" src="part1.js"></script>
+</head>
+
+<body>
+    <canvas id="gl-canvas" width="512" height="512">
+    Oops ... your browser doesn't support the HTML5 canvas element
+    </canvas>
+    </br>
+    <button id="Teapot">Teapot Movement</button>
+    </br>
+    <button id="Debug">Debugging View</button>
+    </br>
+    <button id="Light">Light Animation</button>
+</body></html>
