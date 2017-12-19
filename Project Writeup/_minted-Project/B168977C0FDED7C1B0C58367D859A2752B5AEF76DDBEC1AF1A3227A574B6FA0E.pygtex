@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGdefault{k}{uniform} \PYGdefault{k}{bool} \PYGdefault{n}{reflexive}\PYGdefault{p}{;}
+\PYGdefault{k}{uniform} \PYGdefault{k}{vec3} \PYGdefault{n}{eye}\PYGdefault{p}{;}
+\end{Verbatim}

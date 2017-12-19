@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGdefault{k+kd}{var} \PYGdefault{n+nx}{projectionMatrix} \PYGdefault{o}{=} \PYGdefault{n+nx}{perspective}\PYGdefault{p}{(}
+    \PYGdefault{l+m+mf}{90.0}\PYGdefault{p}{,} \PYGdefault{n+nx}{canvas}\PYGdefault{p}{.}\PYGdefault{n+nx}{width}\PYGdefault{o}{/}\PYGdefault{n+nx}{canvas}\PYGdefault{p}{.}\PYGdefault{n+nx}{height}\PYGdefault{p}{,} \PYGdefault{l+m+mf}{0.0001}\PYGdefault{p}{,} \PYGdefault{l+m+mi}{100}\PYGdefault{p}{)}
+
+\PYGdefault{k+kd}{var} \PYGdefault{n+nx}{eye} \PYGdefault{o}{=} \PYGdefault{n+nx}{vec3}\PYGdefault{p}{(}\PYGdefault{l+m+mi}{0}\PYGdefault{p}{,} \PYGdefault{l+m+mi}{0}\PYGdefault{p}{,} \PYGdefault{n+nx}{cameraRadius}\PYGdefault{p}{);}
+\PYGdefault{k+kd}{var} \PYGdefault{n+nx}{at} \PYGdefault{o}{=} \PYGdefault{n+nx}{vec3}\PYGdefault{p}{(}\PYGdefault{l+m+mi}{0}\PYGdefault{p}{,} \PYGdefault{l+m+mi}{0}\PYGdefault{p}{,} \PYGdefault{l+m+mi}{0}\PYGdefault{p}{);}
+\PYGdefault{k+kd}{var} \PYGdefault{n+nx}{up} \PYGdefault{o}{=} \PYGdefault{n+nx}{vec3}\PYGdefault{p}{(}\PYGdefault{l+m+mf}{0.0}\PYGdefault{p}{,} \PYGdefault{l+m+mf}{1.0}\PYGdefault{p}{,} \PYGdefault{l+m+mf}{0.0}\PYGdefault{p}{);}
+\PYGdefault{k+kd}{var} \PYGdefault{n+nx}{viewMatrix} \PYGdefault{o}{=} \PYGdefault{n+nx}{lookAt}\PYGdefault{p}{(}\PYGdefault{n+nx}{eye}\PYGdefault{p}{,} \PYGdefault{n+nx}{at}\PYGdefault{p}{,} \PYGdefault{n+nx}{up}\PYGdefault{p}{);}
+\end{Verbatim}

@@ -114,7 +114,7 @@ window.onload = function init()
     var normalmap = document.createElement('img');
     normalmap.crossorigin = 'anonymous';
     normalmap.onload = function (event) {
-        var image = event.target
+        var image = event.target;
 
         var texture = gl.createTexture();
         gl.activeTexture(gl.TEXTURE1);

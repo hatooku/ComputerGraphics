@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGdefault{c+c1}{// While Rendering Environment}
+\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{uniform1f}\PYGdefault{p}{(}\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{getUniformLocation}\PYGdefault{p}{(}\PYGdefault{n+nx}{program}\PYGdefault{p}{,} \PYGdefault{l+s+s2}{\PYGdefaultZdq{}reflexive\PYGdefaultZdq{}}\PYGdefault{p}{),} \PYGdefault{l+m+mi}{0}\PYGdefault{p}{);}
+
+\PYGdefault{c+c1}{// While Rendering Sphere}
+\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{uniform1f}\PYGdefault{p}{(}\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{getUniformLocation}\PYGdefault{p}{(}\PYGdefault{n+nx}{program}\PYGdefault{p}{,} \PYGdefault{l+s+s2}{\PYGdefaultZdq{}reflexive\PYGdefaultZdq{}}\PYGdefault{p}{),} \PYGdefault{l+m+mi}{1}\PYGdefault{p}{);}
+\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{uniform3fv}\PYGdefault{p}{(}\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{getUniformLocation}\PYGdefault{p}{(}\PYGdefault{n+nx}{program}\PYGdefault{p}{,} \PYGdefault{l+s+s2}{\PYGdefaultZdq{}eye\PYGdefaultZdq{}}\PYGdefault{p}{),} \PYGdefault{n+nx}{flatten}\PYGdefault{p}{(}\PYGdefault{n+nx}{eye}\PYGdefault{p}{));}
+\end{Verbatim}

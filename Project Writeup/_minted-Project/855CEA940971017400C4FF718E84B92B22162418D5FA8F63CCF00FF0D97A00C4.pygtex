@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{disable}\PYGdefault{p}{(}\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{DEPTH\PYGdefaultZus{}TEST}\PYGdefault{p}{);}
+\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{uniformMatrix4fv}\PYGdefault{p}{(}
+    \PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{getUniformLocation}\PYGdefault{p}{(}\PYGdefault{n+nx}{program}\PYGdefault{p}{,} \PYGdefault{l+s+s2}{\PYGdefaultZdq{}mTex\PYGdefaultZdq{}}\PYGdefault{p}{),} \PYGdefault{k+kc}{false}\PYGdefault{p}{,} \PYGdefault{n+nx}{flatten}\PYGdefault{p}{(}\PYGdefault{n+nx}{mtex}\PYGdefault{p}{));}
+\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{uniformMatrix4fv}\PYGdefault{p}{(}\PYGdefault{n+nx}{projectionMatrixLocation}\PYGdefault{p}{,} \PYGdefault{k+kc}{false}\PYGdefault{p}{,} \PYGdefault{n+nx}{flatten}\PYGdefault{p}{(}\PYGdefault{n+nx}{mat4}\PYGdefault{p}{()));}
+\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{uniformMatrix4fv}\PYGdefault{p}{(}\PYGdefault{n+nx}{viewMatrixLocation}\PYGdefault{p}{,} \PYGdefault{k+kc}{false}\PYGdefault{p}{,} \PYGdefault{n+nx}{flatten}\PYGdefault{p}{(}\PYGdefault{n+nx}{mat4}\PYGdefault{p}{()));}
+\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{uniformMatrix4fv}\PYGdefault{p}{(}\PYGdefault{n+nx}{modelMatrixLocation}\PYGdefault{p}{,} \PYGdefault{k+kc}{false}\PYGdefault{p}{,} \PYGdefault{n+nx}{flatten}\PYGdefault{p}{(}\PYGdefault{n+nx}{mat4}\PYGdefault{p}{()));}
+\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{drawArrays}\PYGdefault{p}{(}
+    \PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{TRIANGLE\PYGdefaultZus{}STRIP}\PYGdefault{p}{,} \PYGdefault{n+nx}{pointsArray}\PYGdefault{p}{.}\PYGdefault{n+nx}{length}\PYGdefault{p}{,} \PYGdefault{n+nx}{background\PYGdefaultZus{}points}\PYGdefault{p}{.}\PYGdefault{n+nx}{length}\PYGdefault{p}{);}
+\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{enable}\PYGdefault{p}{(}\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{DEPTH\PYGdefaultZus{}TEST}\PYGdefault{p}{);}
+\end{Verbatim}

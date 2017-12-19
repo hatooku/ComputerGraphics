@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{bufferData}\PYGdefault{p}{(}\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{ARRAY\PYGdefaultZus{}BUFFER}\PYGdefault{p}{,}
+    \PYGdefault{n+nx}{flatten}\PYGdefault{p}{(}\PYGdefault{n+nx}{pointsArray}\PYGdefault{p}{.}\PYGdefault{n+nx}{concat}\PYGdefault{p}{(}\PYGdefault{n+nx}{background\PYGdefaultZus{}points}\PYGdefault{p}{)),} \PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{STATIC\PYGdefaultZus{}DRAW}\PYGdefault{p}{);}
+\end{Verbatim}

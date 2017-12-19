@@ -7,22 +7,22 @@ uniform mat4 modelMatrix;
 uniform mat4 viewMatrix;
 uniform mat4 projectionMatrix;
 
-varying vec4 vPosition;
+varying vec4 vNormal;
 void main() {
     gl_Position = projectionMatrix * viewMatrix * modelMatrix * aPosition;
-    vPosition = aPosition;
+    vNormal = aPosition;
 }
 </script>
 
 <script id="fragment-shader" type="x-shader/x-fragment">
 precision highp float;
 
-varying vec4 vPosition;
+varying vec4 vNormal;
 uniform mat4 mTex;
 uniform samplerCube texMap;
 
 void main() {
-    gl_FragColor = textureCube(texMap, (mTex * vPosition).xyz);
+    gl_FragColor = textureCube(texMap, (mTex * vNormal).xyz);
 }
 </script> 
 

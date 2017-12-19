@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYGdefault{k}{float} \PYGdefault{n}{u} \PYGdefault{o}{=} \PYGdefault{n}{atan}\PYGdefault{p}{(}\PYGdefault{n}{vNormal}\PYGdefault{p}{.}\PYGdefault{n}{x}\PYGdefault{p}{,} \PYGdefault{n}{vNormal}\PYGdefault{p}{.}\PYGdefault{n}{z}\PYGdefault{p}{)} \PYGdefault{o}{/} \PYGdefault{p}{(}\PYGdefault{o}{\PYGdefaultZhy{}}\PYGdefault{l+m+mf}{2.0} \PYGdefault{o}{*} \PYGdefault{n}{PI}\PYGdefault{p}{);}
+\PYGdefault{k}{float} \PYGdefault{n}{v} \PYGdefault{o}{=} \PYGdefault{n}{atan}\PYGdefault{p}{(}
+    \PYGdefault{n}{sqrt}\PYGdefault{p}{(}\PYGdefault{n}{vNormal}\PYGdefault{p}{.}\PYGdefault{n}{z} \PYGdefault{o}{*} \PYGdefault{n}{vNormal}\PYGdefault{p}{.}\PYGdefault{n}{z} \PYGdefault{o}{+} \PYGdefault{n}{vNormal}\PYGdefault{p}{.}\PYGdefault{n}{x} \PYGdefault{o}{*} \PYGdefault{n}{vNormal}\PYGdefault{p}{.}\PYGdefault{n}{x}\PYGdefault{p}{),} \PYGdefault{n}{vNormal}\PYGdefault{p}{.}\PYGdefault{n}{y}\PYGdefault{p}{)} \PYGdefault{o}{/} \PYGdefault{n}{PI}\PYGdefault{p}{;}
+\end{Verbatim}
