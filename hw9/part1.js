@@ -274,8 +274,6 @@ window.onload = function init()
         initAttributeVariable(gl, program2.vTexCoord, buffers2.texture);
         gl.uniformMatrix4fv(gl.getUniformLocation(program2, "viewMatrix"), false, flatten(viewMatrix));
 
-        // gl.drawArrays( gl.TRIANGLE_STRIP, 0, ground_points.length );
-
         /*
          * Draw Teapot w/ Reflection
          */

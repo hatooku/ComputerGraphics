@@ -2,25 +2,18 @@
 
 var gl;
 
-// Num of floats in each attribute
-const POSITION_SIZE = 4;
-const NORMAL_SIZE = 4;
-const COLOR_SIZE = 4;
 const BG_COL = vec4(0.2, 0.2, 0.2, 1.0);
 
-var va = vec4(0.0, 0.0, 1.0, 1);
-var vb = vec4(0.0, 0.942809, -0.333333, 1);
-var vc = vec4(-0.816497, -0.471405, -0.333333, 1);
-var vd = vec4(0.816497, -0.471405, -0.333333, 1);
+const va = vec4(0.0, 0.0, 1.0, 1);
+const vb = vec4(0.0, 0.942809, -0.333333, 1);
+const vc = vec4(-0.816497, -0.471405, -0.333333, 1);
+const vd = vec4(0.816497, -0.471405, -0.333333, 1);
 
 var pointsArray = [];
-var normalsArray = [];
 
 var subdivisionLevel = 7;
 
-const cameraRadius = 7;
-const cameraRotationSpeed = 0.03;
-var cameraTheta = 0;
+const cameraRadius = 3;
 
 var cubemap = ['textures/cm_left.png', // POSITIVE_X
                'textures/cm_right.png', // NEGATIVE_X
@@ -54,25 +47,9 @@ function divideTriangle(a, b, c, count) {
 }
 
 function triangle(v1, v2, v3) {
-    normalsArray.push(v1);
-    normalsArray.push(v2);
-    normalsArray.push(v3);
-
     pointsArray.push(v1);
     pointsArray.push(v2);
     pointsArray.push(v3);
-}
-
-function redraw(buffers) {
-    pointsArray = [];
-    normalsArray = [];
-    tetrahedron(va, vb, vc, vd, subdivisionLevel);
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffers.position);
-    gl.bufferData(gl.ARRAY_BUFFER, flatten(pointsArray), gl.STATIC_DRAW);
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffers.normal);
-    gl.bufferData(gl.ARRAY_BUFFER, flatten(normalsArray), gl.STATIC_DRAW);
-    // render();
-    document.getElementById('Subdivision Level').innerHTML = subdivisionLevel;
 }
 
 window.onload = function init()
@@ -134,15 +111,11 @@ window.onload = function init()
     program.a_Position = gl.getAttribLocation( program, "aPosition" );
     initAttributeVariable(gl, program.a_Position, buffers.position);
 
-    // Setup aNormal attribute
-    program.a_Normal = gl.getAttribLocation( program, "aNormal" );
-    initAttributeVariable(gl, program.a_Normal, buffers.normal);
-
     // Setup view, projection matrices
     var modelMatrixLocation = gl.getUniformLocation(program, "modelMatrix");
     var projectionMatrixLocation = gl.getUniformLocation(program, "projectionMatrix");
 
-    var projectionMatrix = perspective(45.0, canvas.width/canvas.height, 0.0001, 100)
+    var projectionMatrix = perspective(90.0, canvas.width/canvas.height, 0.0001, 100)
 
     gl.uniformMatrix4fv(projectionMatrixLocation, false, flatten(projectionMatrix));
     gl.uniformMatrix4fv(modelMatrixLocation, false, flatten(translate(0, 0, 0)));
@@ -152,8 +125,7 @@ window.onload = function init()
         gl.clear( gl.COLOR_BUFFER_BIT );
         gl.clear( gl.DEPTH_BUFFER_BIT );
 
-        cameraTheta = (cameraTheta + cameraRotationSpeed) % (2 * Math.PI);
-        var eye = vec3(cameraRadius * Math.sin(cameraTheta), 0, cameraRadius * Math.cos(cameraTheta));
+        var eye = vec3(0, 0, cameraRadius);
         var at = vec3(0, 0, 0);
         var up = vec3(0.0, 1.0, 0.0);
 
@@ -162,8 +134,6 @@ window.onload = function init()
         gl.uniformMatrix4fv(viewMatrixLocation, false, flatten(viewMatrix));
 
         gl.drawArrays( gl.TRIANGLES, 0, pointsArray.length);
-
-        requestAnimFrame(render);
     }
 };
 
@@ -173,18 +143,11 @@ function initBuffers(program) {
     const positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, flatten(pointsArray), gl.STATIC_DRAW);
-    positionBuffer.num = POSITION_SIZE;
+    positionBuffer.num = 4;
     positionBuffer.type = gl.FLOAT;
-
-    const normalBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, flatten(normalsArray), gl.STATIC_DRAW);
-    normalBuffer.num = NORMAL_SIZE;
-    normalBuffer.type = gl.FLOAT;
 
     return {
         position: positionBuffer,
-        normal: normalBuffer,
     };
 }
 

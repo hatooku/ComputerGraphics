@@ -57,7 +57,6 @@ void main() {
     gl_Position = projectionMatrix * modelViewMatrix_R * vec4(a_Position,1);
     v_PositionFromLight = u_MvpMatrixFromLight * vec4(a_Position, 1);
     vColor = a_Color;
-    // gl_Position = v_PositionFromLight;
 }
 </script>
 
@@ -110,7 +109,6 @@ void main() {
     mat4 modelViewMatrix = viewMatrix * modelMatrix;
     gl_Position = projectionMatrix * modelViewMatrix * vec4(aPosition, 1);
     v_PositionFromLight = u_MvpMatrixFromLight * vec4(aPosition, 1);
-    // gl_Position = v_PositionFromLight;
     fTexCoord = vTexCoord;
 }
 </script>

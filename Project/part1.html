@@ -3,7 +3,6 @@
 <head>
 <script id="vertex-shader" type="x-shader/x-vertex">
 attribute vec4 aPosition;
-attribute vec4 aNormal;
 varying lowp vec3 vLighting;
 uniform mat4 modelMatrix;
 uniform mat4 viewMatrix;
@@ -12,7 +11,7 @@ uniform mat4 projectionMatrix;
 varying vec4 vNormal;
 void main() {
     gl_Position = projectionMatrix * viewMatrix * modelMatrix * aPosition;
-    vNormal = aNormal;
+    vNormal = aPosition;
 }
 </script>
 

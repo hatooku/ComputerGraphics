@@ -2,18 +2,14 @@
 
 var gl;
 
-// Num of floats in each attribute
-const POSITION_SIZE = 4;
-const COLOR_SIZE = 4;
 const BG_COL = vec4(0.2, 0.2, 0.2, 1.0);
 
-var va = vec4(0.0, 0.0, 1.0, 1);
-var vb = vec4(0.0, 0.942809, -0.333333, 1);
-var vc = vec4(-0.816497, -0.471405, -0.333333, 1);
-var vd = vec4(0.816497, -0.471405, -0.333333, 1);
+const va = vec4(0.0, 0.0, 1.0, 1);
+const vb = vec4(0.0, 0.942809, -0.333333, 1);
+const vc = vec4(-0.816497, -0.471405, -0.333333, 1);
+const vd = vec4(0.816497, -0.471405, -0.333333, 1);
 
 var pointsArray = [];
-
 var subdivisionLevel = 7;
 
 var cubemap = ['textures/cm_left.png', // POSITIVE_X
@@ -161,8 +157,6 @@ window.onload = function init()
         gl.uniformMatrix4fv(viewMatrixLocation, false, flatten(viewMatrix));
         gl.uniformMatrix4fv(modelMatrixLocation, false, flatten(translate(0, 0, 0)));
         gl.drawArrays( gl.TRIANGLES, 0, pointsArray.length);
-
-        // requestAnimFrame(render);
     }
 };
 
@@ -172,7 +166,7 @@ function initBuffers(program) {
     const positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, flatten(pointsArray.concat(background_points)), gl.STATIC_DRAW);
-    positionBuffer.num = POSITION_SIZE;
+    positionBuffer.num = 4;
     positionBuffer.type = gl.FLOAT;
 
     return {
