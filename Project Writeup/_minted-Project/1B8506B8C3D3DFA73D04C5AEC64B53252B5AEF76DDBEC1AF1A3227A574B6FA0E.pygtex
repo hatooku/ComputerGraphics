@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYGdefault{k}{vec3} \PYGdefault{n}{newNormal} \PYGdefault{o}{=} \PYGdefault{n}{rotate\PYGdefaultZus{}to\PYGdefaultZus{}normal}\PYGdefault{p}{(}\PYGdefault{n}{vNormal}\PYGdefault{p}{.}\PYGdefault{n}{xyz}\PYGdefault{p}{,} \PYGdefault{n}{tangent\PYGdefaultZus{}vector}\PYGdefault{p}{);}
-\end{Verbatim}

@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYGdefault{k+kd}{var} \PYGdefault{n+nx}{cubeMap} \PYGdefault{o}{=} \PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{createTexture}\PYGdefault{p}{();}
-\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{activeTexture}\PYGdefault{p}{(}\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{TEXTURE0}\PYGdefault{p}{);}
-\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{bindTexture}\PYGdefault{p}{(}\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{TEXTURE\PYGdefaultZus{}CUBE\PYGdefaultZus{}MAP}\PYGdefault{p}{,} \PYGdefault{n+nx}{cubeMap}\PYGdefault{p}{);}
-\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{uniform1i}\PYGdefault{p}{(}\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{getUniformLocation}\PYGdefault{p}{(}\PYGdefault{n+nx}{program}\PYGdefault{p}{,} \PYGdefault{l+s+s2}{\PYGdefaultZdq{}texMap\PYGdefaultZdq{}}\PYGdefault{p}{),} \PYGdefault{l+m+mi}{0}\PYGdefault{p}{);}
-\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{texParameteri}\PYGdefault{p}{(}\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{TEXTURE\PYGdefaultZus{}CUBE\PYGdefaultZus{}MAP}\PYGdefault{p}{,} \PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{TEXTURE\PYGdefaultZus{}MIN\PYGdefaultZus{}FILTER}\PYGdefault{p}{,}\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{NEAREST}\PYGdefault{p}{);}
-\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{pixelStorei}\PYGdefault{p}{(}\PYGdefault{n+nx}{gl}\PYGdefault{p}{.}\PYGdefault{n+nx}{UNPACK\PYGdefaultZus{}FLIP\PYGdefaultZus{}Y\PYGdefaultZus{}WEBGL}\PYGdefault{p}{,} \PYGdefault{k+kc}{true}\PYGdefault{p}{);}
-\end{Verbatim}

@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYGdefault{k+kr}{const} \PYGdefault{n+nx}{background\PYGdefaultZus{}points} \PYGdefault{o}{=} \PYGdefault{p}{[}
-    \PYGdefault{n+nx}{vec4}\PYGdefault{p}{(}\PYGdefault{o}{\PYGdefaultZhy{}}\PYGdefault{l+m+mf}{1.0}\PYGdefault{p}{,} \PYGdefault{o}{\PYGdefaultZhy{}}\PYGdefault{l+m+mf}{1.0}\PYGdefault{p}{,} \PYGdefault{l+m+mf}{0.999}\PYGdefault{p}{,} \PYGdefault{l+m+mf}{1.0}\PYGdefault{p}{),}
-    \PYGdefault{n+nx}{vec4}\PYGdefault{p}{(}\PYGdefault{l+m+mf}{1.0}\PYGdefault{p}{,} \PYGdefault{o}{\PYGdefaultZhy{}}\PYGdefault{l+m+mf}{1.0}\PYGdefault{p}{,} \PYGdefault{l+m+mf}{0.999}\PYGdefault{p}{,} \PYGdefault{l+m+mf}{1.0}\PYGdefault{p}{),}
-    \PYGdefault{n+nx}{vec4}\PYGdefault{p}{(}\PYGdefault{o}{\PYGdefaultZhy{}}\PYGdefault{l+m+mf}{1.0}\PYGdefault{p}{,} \PYGdefault{l+m+mf}{1.0}\PYGdefault{p}{,} \PYGdefault{l+m+mf}{0.999}\PYGdefault{p}{,} \PYGdefault{l+m+mf}{1.0}\PYGdefault{p}{),}
-    \PYGdefault{n+nx}{vec4}\PYGdefault{p}{(}\PYGdefault{l+m+mf}{1.0}\PYGdefault{p}{,} \PYGdefault{l+m+mf}{1.0}\PYGdefault{p}{,} \PYGdefault{l+m+mf}{0.999}\PYGdefault{p}{,} \PYGdefault{l+m+mf}{1.0}\PYGdefault{p}{),}
-\PYGdefault{p}{]}
-\end{Verbatim}
